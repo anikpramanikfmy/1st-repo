@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+class A {
+    int arr[10];
+public:
+    A() {
+        for(int i=0;i<10;i++) {
+            arr[i] = i*10;
+        }
+    }
+
+    int& operator[] (const int &ind) {
+        return arr[ind];
+    }
+    friend A& operator+ (const A &a, const int &b);
+    bool operator< (const int &b) {
+        return arr[0]<b;
+    }
+};
+
+A& operator+ (const A &a, const int &b) {
+    A temp = a;
+    for(int i=0;i<10;i++) {
+        temp[i] += b;
+    }
+    return temp;
+}
+
+
+int main() {
+    A a,b,c;
+    a[3] = b+2<c[0];
+    cout << a[3] << endl;
+    return 0;
+}
+
+
